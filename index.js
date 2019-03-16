@@ -198,8 +198,6 @@ internals.unparse = function(specs, input, levels){
 		for(var row in input){
 			for(var spec in specs){
 				var value = input[row][specs[spec].name];
-        console.log('VALUE', value, specs[spec].name);
-        console.log('ROW', JSON.stringify(input[row]));
 				var defaultValue = lodash.defaultTo(specs[spec].default, "");
 				value = lodash.defaultTo(value, defaultValue);
 				value = String(value);
@@ -235,11 +233,9 @@ internals.unparse = function(specs, input, levels){
 };
 
 const preprocessCheck = (spec, value) => {
-  console.log("SPEC", JSON.stringify(spec));
   if (spec.preprocess) {
     value = spec.preprocess(value);
   }
-  console.log('VALUE', value);
   return value;
 }
 
